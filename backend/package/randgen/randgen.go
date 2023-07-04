@@ -93,7 +93,7 @@ var nouns = []string{
 	"Music",
 }
 
-func generateRandomUsername() string {
+func GenerateRandomUsername() string {
 	rand.Seed(time.Now().UnixNano())
 	adjective := adjectives[rand.Intn(len(adjectives))]
 	noun := nouns[rand.Intn(len(nouns))]

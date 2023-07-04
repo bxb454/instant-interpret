@@ -10,6 +10,7 @@ import (
 
 	"github.com/bxb454/instant-interpret/package/config"
 	"github.com/bxb454/instant-interpret/package/database"
+	"github.com/bxb454/instant-interpret/package/randgen"
 	"github.com/bxb454/instant-interpret/package/translationservice"
 	"github.com/bxb454/instant-interpret/package/websocket"
 	"github.com/rs/cors"
@@ -22,7 +23,7 @@ func serveWs(pool *websocket.Pool, w http.ResponseWriter, r *http.Request, ts *t
 		fmt.Fprintf(w, "%+v\n", err)
 	}
 
-	client := websocket.NewClient(conn, pool, ts, db, randgen.generateRandomUsername(), "en", "en")
+	client := websocket.NewClient(conn, pool, ts, db, randgen.GenerateRandomUsername(), "en", "en")
 
 	pool.Register <- client
 	client.Read()
